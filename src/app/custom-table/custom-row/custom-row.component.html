@@ -1,0 +1,9 @@
+<tbody>
+<tr *ngFor="let row of rowData">
+    <ng-container *ngFor="let col of colKeys">
+        <td>
+            {{row[col]}}
+        </td>
+    </ng-container>
+</tr>
+</tbody>

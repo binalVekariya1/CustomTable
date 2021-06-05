@@ -1,0 +1,17 @@
+<div class="input-group rounded" *ngIf="searchableColumns.length > 0">
+    <input type="text" placeholder="search" [ngModel]="_searchValue" (ngModelChange)="onSearch($event)" />
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <app-custom-column [columnDef]="columnDef"></app-custom-column>
+        </tr>
+    </thead>
+    <app-custom-row *ngIf="totalRecords > 0" [colKeys]="colKeys" [rowData]="_rowData"></app-custom-row>
+    <tr *ngIf="totalRecords == 0">{{tableConfig.noDataDisplayMessage}}</tr>
+    <tfoot>
+        <app-custom-pagination [totalRecords]="totalRecords" [recordsPerPage]="tableConfig.noOfRecordsPerPage"
+            (onPageChange)="displayActivePage($event)"></app-custom-pagination>
+    </tfoot>
+</table>
